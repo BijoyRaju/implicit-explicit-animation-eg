@@ -1,3 +1,4 @@
+import 'package:anm_study/view/curved_animation.dart';
 import 'package:anm_study/view/explicit_animation.dart';
 import 'package:flutter/material.dart';
 
@@ -18,24 +19,29 @@ class _ImplicitAnimationState extends State<ImplicitAnimation> {
         children: [
           Center(
             child: AnimatedContainer(
-              width: size,
+              duration: Duration(seconds: 1),
               height: size,
-              duration: Duration(seconds: 2),
-              color: Colors.red,
+              width: size,
+              child: FlutterLogo(),
             ),
           ),
-          SizedBox(height: 100),
+          SizedBox(height: 20),
           ElevatedButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => ExplicitAnimation()));
-          }, child: Text("Explicit Animation"))
+          }, child: Text("Explicit Animation")),
+          SizedBox(height: 20),
+          ElevatedButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => CurevedAnimation()));
+          }, child: Text("Curved Animation")) 
         ],
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        setState(() {
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
           size = size == 100 ? 200 : 100;
-        });
-      },
-      child: Icon(Icons.play_arrow),
+          });
+        },
+        child: Icon(Icons.play_arrow),
       ),
     );
   }
